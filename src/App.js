@@ -12,7 +12,7 @@ function App() {
   const [number2, setNumber2] = useState('')
   const [result, setResult] = useState(false)
  
-  const [total, setTotal] = useState(number1 + operator + number2)
+  const total = number1 + operator + number2
 
 
 
@@ -34,16 +34,27 @@ function App() {
       setNumber1('0')
       setNumber2('')
       setOperator('')
-      setTotal('0')
       setResult(false)
     } else if (op === '=') {
       setResult(true)
       if (operator === '+') {
-        setTotal(String(Number(number1) + Number(number2)))
-      } else {
-        setTotal(String(Number(number1) - Number(number2)))
+        setNumber1(String(Number(number1) + Number(number2)))
+        setNumber2('')
+        setOperator('')
+      }else {
+        setNumber1(String(Number(number1) - Number(number2)))
+        setNumber2('')
+        setOperator('')
       }
-    } else {
+    } else if (op === '+'){
+      setOperator('+')
+      setNumber1(number1 + operator + number2)
+      setResult(false)
+    }else if (op === '-'){
+      setOperator('-')
+      setNumber1(number1 + operator + number2)
+      setResult(false)
+    }else {
       setOperator(op)
     }
 
